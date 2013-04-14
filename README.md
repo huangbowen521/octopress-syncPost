@@ -5,20 +5,18 @@ A octopress plugin to sync the latest post to a website which suport MetaWeblog.
 
 ## Configure
 
-1. Checkout this repository. copy _custom folder(contains the file in it) to your octopress folder.
+1. Checkout this repository, **copy _custom folder(contains the file in it) to your octopress folder.**
 
 2. add new gem denpendencies to Gemfile.
 
 	```ruby
-
 	  gem 'metaweblog', '~> 0.1.0'
 	  gem 'nokogiri', '~> 1.5.9'
-
 	```
-(The first gem is used to send post with MetaWeblog API.
-The sencend gem is used to parse html.)
+	(The first gem is used to send post with MetaWeblog API.
+	The second gem is used to parse html.)
 
-then run `bundle install` to install them.
+	then run `bundle install` to install them.
 
 3. add MetaWeblog configuration to _config.yml file.
 
@@ -57,11 +55,11 @@ There is a example for CNBlogs config.
 
 ## Usage
 
-1. run `rake generate` to generate files to public floder.
+1. run `rake generate` to generate sites.
 
-2. run `rake sync_post` to sync the latest post to your another website.
+2. run `rake sync_post` to sync the latest post to your website.
 
-**Please note:** Check the image url in your post, to fix the image url issue.
+**Please note:Check the image url in your post, to fix the image url issue.**
 
 ## How to keep same styling
 
@@ -69,5 +67,34 @@ Use cnblogs as a example.
 
 1. use file uploader in cnblogs dashboard to upload screen.css file in your octopress project.
 
-2. config the '页首html代码' to use the screen.css file.
+2. config the '页首html代码' in cnblogs dashboard to use the screen.css file.
 
+
+## Some websites which support MetaWeblog API.
+
+* Wordpress
+
+	If your WordPress root is http://example.com/wordpress/, then you have:
+	Server: http://example.com/ (some tools need just the 'example.com' hostname part)
+	Path: /wordpress/xmlrpc.php
+	complete URL (just in case): http://example.com/wordpress/xmlrpc.php
+
+* 51CTO.com
+
+	URL：http://<yourBlogUrl>/xmlrpc.php（example: http://magong.blog.51cto.com/xmlrpc.php）
+
+* 博客大巴
+
+	URL：http://www.blogbus.com/<accountName>/app.php（example: http://www.blogbus.com/holly0801/app.php
+
+* CSDN
+
+	URL：http://hi.csdn.net/<accountName>/services/metablogapi.aspx（example: http://hi.csdn.net/bvbook/services/metablogapi.aspx）
+
+* 博客园
+
+	URL：http://www.cnblogs.com/<accountName>/services/metaweblog.aspx（example: http://www.cnblogs.com/bvbook/services/metaweblog.aspx）
+
+* 网易
+
+	URL: http://<accountName>.blog.163.com/ (example: http://huang0925.blog.163.com/).
