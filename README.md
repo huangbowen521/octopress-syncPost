@@ -61,4 +61,13 @@ There is a example for CNBlogs config.
 
 2. run `rake sync_post` to sync the latest post to your another website.
 
+**Please note:** Check the image url in your post, to fix the image url issue.
+
+## How to keep same styling
+
+Use cnblogs as a example.
+
+1. use file uploader in cnblogs dashboard to upload screen.css file in your octopress project.
+
+2. config the '页首html代码' to use the screen.css file.
 
