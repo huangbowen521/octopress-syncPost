@@ -29,7 +29,7 @@ A octopress plugin to sync the latest post to a website which suport MetaWeblog.
 	MetaWeblog_blogid: *BlogID*  //can be any number
 
 	``` 
-There is a example for CNBlogs config.
+There is a example for [cnblogs] config.
 
 	```xml
 
@@ -59,11 +59,15 @@ There is a example for CNBlogs config.
 
 2. run `rake sync_post` to sync the latest post to your website.
 
-**Please note:Check the image url in your post, to fix the image url issue.**
+**Please note: ** 
+
+1. Check the image url in your post, to fix the image url issue.
+
+2. Some website require you enable MetaWeblog features in the dashboard. (ect. [cnblogs])
 
 ## How to keep same styling
 
-Use cnblogs as a example.
+Use [cnblogs] as a example.
 
 1. use file uploader in cnblogs dashboard to upload screen.css file in your octopress project.
 
@@ -98,3 +102,5 @@ Use cnblogs as a example.
 * 网易
 
 	URL: http://<accountName>.blog.163.com/ (example: http://huang0925.blog.163.com/).
+
+[cnblogs]: http://www.cnblogs.com/
