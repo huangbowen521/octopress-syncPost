@@ -59,7 +59,7 @@ There is a example for [cnblogs] config.
 
 2. run `rake sync_post` to sync the latest post to your website.
 
-**Please note: ** 
+**Please note:** 
 
 1. Check the image url in your post, to fix the image url issue.
 
