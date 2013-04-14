@@ -3,6 +3,8 @@ octopress-syncPost
 
 A octopress plugin to sync the latest post to a website which suport MetaWeblog. (Wordpress, CSDN, CNBlogs,BlogBus etc.)
 
+中文介绍请看这里: <http://huangbowen.net/blog/2013/04/14/octopress-plugin-to-sync-post/>
+
 ## Configure
 
 1. Checkout this repository, **copy _custom folder(contains the file in it) to your octopress folder.**
