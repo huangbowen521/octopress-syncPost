@@ -1,6 +1,6 @@
 require 'metaweblog'
 require 'nokogiri'
-
+require 'yaml'
 
 module MetaWeblogSync
 
