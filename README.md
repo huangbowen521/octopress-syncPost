@@ -1,9 +1,8 @@
-octopress-syncPost
+octopress-syncPost V2.0
 ==================
 
 A octopress plugin to sync the latest post to a website which suport MetaWeblog. (Wordpress, CSDN, CNBlogs,BlogBus etc.)
 
-中文介绍请看这里: <http://huangbowen.net/blog/2013/04/14/octopress-plugin-to-sync-post/>
 
 ## Configure
 
@@ -20,26 +19,38 @@ A octopress plugin to sync the latest post to a website which suport MetaWeblog.
 
 	then run `bundle install` to install them.
 
-3. add MetaWeblog configuration to _config.yml file.
+3. Copy metaweblog.yml to your octopress folder and change configuration in it. (**Please note: never check in this file to git due to security issue. **)
 
 	```xml
 
 	# MetaWeblog
+	blogName:
 	MetaWeblog_username: *YOURUSERNAME*
 	MetaWeblog_password: *YOURPASSWORD*
 	MetaWeblog_url: *YOURBLOGMETAWEBLOGURL*
 	MetaWeblog_blogid: *BlogID*  //can be any number
 
 	``` 
-There is a example for [cnblogs] config.
+It supports multiple websites. There are examples in the file.
 
 	```xml
 
-	# MetaWeblog
-	MetaWeblog_username: huang0925
-	MetaWeblog_password: XXXXXXXXXX
-	MetaWeblog_url: http://www.cnblogs.com/huang0925/services/metaweblog.aspx
-	MetaWeblog_blogid: 145005
+#MetaWeblog
+Cnblogs:
+  MetaWeblog_username: <yourname>
+  MetaWeblog_password: <yourpassword>
+  MetaWeblog_url: http://www.cnblogs.com/<yourname>/services/metaweblog.aspx
+  MetaWeblog_blogid: 145005
+# SINA:
+#   MetaWeblog_username: huangbowen521@126.com
+#   MetaWeblog_password: 111111111
+#   MetaWeblog_url: http://upload.move.blog.sina.com.cn/blog_rebuild/blog/xmlrpc.php
+#   MetaWeblog_blogid: 200000
+# 163blog:
+#   MetaWeblog_username: huangbowen521@126.com
+#   MetaWeblog_password: 111111111
+#   MetaWeblog_url: http://os.blog.163.com/api/xmlrpc/metaweblog/
+#   MetaWeblog_blogid: 200001
 
 	```
 

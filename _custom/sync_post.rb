@@ -8,9 +8,8 @@ module MetaWeblogSync
   class SyncPost
 
     def initialize
-      @config = YAML.load_file(File.expand_path(File.dirname(__FILE__) + '/../_config.yml'))
+      @config = YAML.load_file(File.expand_path(File.dirname(__FILE__) + '/../metaweblog.yml'))
 
-      @blogClient = MetaWeblog::Client.new @config['MetaWeblog_url'], @config['MetaWeblog_blogid'].to_s, @config['MetaWeblog_username'], @config['MetaWeblog_password'].to_s, nil
     end
 
     def postBlog
@@ -19,10 +18,14 @@ module MetaWeblogSync
       blogHtml = getBlogHtml blogPath
       post = getPost blogHtml
 
+      @config.each do |site, paras|
+        puts 'posting new blog:' + post[:title] + 'to ' + site
 
-      puts 'posting new blog:' + post[:title]
-      response = @blogClient.post(post)
-      puts 'post fuccessfully. new blog id:' + response
+        blogClient = MetaWeblog::Client.new paras['MetaWeblog_url'], paras['MetaWeblog_blogid'].to_s, paras['MetaWeblog_username'], paras['MetaWeblog_password'].to_s, nil
+        response = blogClient.post(post)
+        puts 'post successfully. new blog id: ' + response
+
+      end
 
     end
 
@@ -53,7 +56,7 @@ module MetaWeblogSync
       entryContent = html.css('//div[@class="entry-content"]')[0].to_html
 
       # keep same structure with a article
-      article = '<div id="main"><div id="content"><div><article class="hentry" role="article">' + entryContent + '</article></div></div></div>'
+      article = '<div id="main"><article class="hentry" role="article">' + entryContent + '</article></div>'
 
       MetaWeblog::Post.new(title, '', article)
     end

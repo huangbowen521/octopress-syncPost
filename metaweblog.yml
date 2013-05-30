@@ -1,0 +1,16 @@
+#MetaWeblog
+Cnblogs:
+  MetaWeblog_username: <yourname>
+  MetaWeblog_password: <yourpassword>
+  MetaWeblog_url: http://www.cnblogs.com/<yourname>/services/metaweblog.aspx
+  MetaWeblog_blogid: 145005
+# SINA:
+#   MetaWeblog_username: huangbowen521@126.com
+#   MetaWeblog_password: 111111111
+#   MetaWeblog_url: http://upload.move.blog.sina.com.cn/blog_rebuild/blog/xmlrpc.php
+#   MetaWeblog_blogid: 200000
+# 163blog:
+#   MetaWeblog_username: huangbowen521@126.com
+#   MetaWeblog_password: 111111111
+#   MetaWeblog_url: http://os.blog.163.com/api/xmlrpc/metaweblog/
+#   MetaWeblog_blogid: 200001
