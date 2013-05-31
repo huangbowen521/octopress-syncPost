@@ -31,7 +31,7 @@ A octopress plugin to sync the latest post to a website which suport MetaWeblog.
 	MetaWeblog_blogid: *BlogID*  //can be any number
 
 	``` 
-It supports multiple websites. There are examples in the file.
+It supports to post to multiple websites at once. There are examples in the file.
 
 	```xml
 
@@ -86,6 +86,8 @@ Use [cnblogs] as a example.
 
 2. config the '页首html代码' in cnblogs dashboard to use the screen.css file.
 
+(Maybe you should adjust the contents to resolve the styling conflict. You can see an example here: <http://files.cnblogs.com/huang0925/newScreen.css>)
+
 
 ## Some websites which support MetaWeblog API.
 
@@ -103,10 +105,6 @@ Use [cnblogs] as a example.
 * 博客大巴
 
 	URL：http://www.blogbus.com/<accountName>/app.php（example: http://www.blogbus.com/holly0801/app.php
-
-* CSDN
-
-	URL：http://hi.csdn.net/<accountName>/services/metablogapi.aspx（example: http://hi.csdn.net/bvbook/services/metablogapi.aspx）
 
 * 博客园
 
