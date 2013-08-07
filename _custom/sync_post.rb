@@ -70,11 +70,15 @@ module MetaWeblogSync
       imgList = content.css('img')
 
       imgList.each do |img|
-        img['src'] = @globalConfig['url'] + img['src']
+
+        if (!img['src'].match(/^http/))
+          img['src'] = @globalConfig['url'] + img['src']
+        end
       end
 
       # get post content
       content.to_html
+
     end
 
   end
