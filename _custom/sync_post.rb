@@ -2,6 +2,7 @@ require 'metaweblog'
 require 'nokogiri'
 require 'yaml'
 
+
 module MetaWeblogSync
 
 
@@ -9,6 +10,7 @@ module MetaWeblogSync
 
     def initialize
       @config = YAML.load_file(File.expand_path(File.dirname(__FILE__) + '/../metaweblog.yml'))
+      @globalConfig = YAML.load_file(File.expand_path(File.dirname(__FILE__) + '/../_config.yml'))
 
     end
 
@@ -52,13 +54,27 @@ module MetaWeblogSync
       # get post title
       title = html.css('//h1[@class="entry-title"]')[0].content
 
-      # get post content
-      entryContent = html.css('//div[@class="entry-content"]')[0].to_html
+      entryContent = replaceImgUrl(html)
+
 
       # keep same structure with a article
       article = '<div id="main"><article class="hentry" role="article">' + entryContent + '</article></div>'
 
+
       MetaWeblog::Post.new(title, '', article)
+    end
+
+    def replaceImgUrl(html)
+      content = html.css('//div[@class="entry-content"]')[0]
+
+      imgList = content.css('img')
+
+      imgList.each do |img|
+        img['src'] = @globalConfig['url'] + img['src']
+      end
+
+      # get post content
+      content.to_html
     end
 
   end
