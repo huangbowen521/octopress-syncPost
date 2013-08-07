@@ -1,4 +1,4 @@
-octopress-syncPost V2.0
+octopress-syncPost V2.1
 ==================
 
 A octopress plugin to sync the latest post to a website which suport MetaWeblog. (Wordpress, CSDN, CNBlogs,BlogBus etc.)
@@ -74,9 +74,7 @@ It supports to post to multiple websites at once. There are examples in the file
 
 **Please note:** 
 
-1. Check the image url in your post, to fix the image url issue.
-
-2. Some website require you enable MetaWeblog features in the dashboard. (ect. [cnblogs])
+1. Some website require you enable MetaWeblog features in the dashboard. (ect. [cnblogs])
 
 ## How to keep same styling
 
