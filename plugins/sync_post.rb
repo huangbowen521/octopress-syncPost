@@ -5,30 +5,27 @@ require 'yaml'
 
 module MetaWeblogSync
 
-
   class SyncPost
 
     def initialize
-      @config = YAML.load_file(File.expand_path(File.dirname(__FILE__) + '/../metaweblog.yml'))
+     # @config = YAML.load_file(File.expand_path(File.dirname(__FILE__) + '/../metaweblog.yml'))
       @globalConfig = YAML.load_file(File.expand_path(File.dirname(__FILE__) + '/../_config.yml'))
-
     end
 
-    def postBlog
+    def postBlogs passwd
 
       blogPath = getLatestBlogPath
       blogHtml = getBlogHtml blogPath
       post = getPost blogHtml
 
-      @config.each do |site, paras|
+      @globalConfig["MetaWeblog"].each do |site, paras|
         puts 'posting new blog:' + post[:title] + 'to ' + site
+        puts "input passwd :" + passwd
 
-        blogClient = MetaWeblog::Client.new paras['MetaWeblog_url'], paras['MetaWeblog_blogid'].to_s, paras['MetaWeblog_username'], paras['MetaWeblog_password'].to_s, nil
+        blogClient = MetaWeblog::Client.new paras['MetaWeblog_url'], paras['MetaWeblog_blogid'].to_s, paras['MetaWeblog_username'], passwd, nil
         response = blogClient.post(post)
         puts 'post successfully. new blog id: ' + response
-
       end
-
     end
 
     def getLatestBlogPath
@@ -86,4 +83,4 @@ module MetaWeblogSync
 end
 
 syncPost = MetaWeblogSync::SyncPost.new
-syncPost.postBlog
+syncPost.postBlogs $*[0]
