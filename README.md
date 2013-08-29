@@ -1,12 +1,12 @@
 octopress-syncPost V2.1
 ==================
 
-A octopress plugin to sync the latest post to a website which suport MetaWeblog. (Wordpress, CSDN, CNBlogs,BlogBus etc.)
+A octopress plugin to sync post(all posts or latest post) to a website which suport MetaWeblog. (Wordpress, CNBlogs,BlogBus etc.)
 
 
 ## Configure
 
-1. Checkout this repository, **copy plugins/sync_post.rb to octopress/plugins/ folder.**
+1. Checkout this repository, **copy files in plugins into octopress/plugins/ folder.**
 
 2. add new gem denpendencies to Gemfile.
 
@@ -57,19 +57,29 @@ MetaWeblog:
 
 ```ruby
 
-desc "sync post to MetaWeblog site"
-task :sync_post, :passwd do |t, args|
+desc "sync latest post to MetaWeblog site"
+task :sync_latest_post, :passwd do |t, args|
   puts "Sync the latest post to MetaWeblog site"
-  system "ruby plugins/sync_post.rb  " + args[:passwd]
+  system "ruby plugins/sync_latest_post.rb  " + args[:passwd]
+end
+
+desc "sync all posts to MetaWeblog site(s)"
+task :sync_all_posts, :passwd do |t, args|
+  puts "Sync all posts to MetaWeblog site(s)"
+  system "ruby plugins/sync_all_posts.rb  " + args[:passwd]
 end
 
 ```
 
 ## Usage
 
-1. run `rake generate` to generate sites.
+1. run `rake generate` to generate sites to make all posts brand new.
 
-2. run `rake sync_post["PASSWD"]` to sync the latest post to your website. `PASSWD` is your password for the blog sites(It is considered that all your blogs are under the same password). 
+
+2. run `rake sync_latest_post["PASSWD"]` to sync the latest post to your website. 
+or run `rake sync_all_posts["PASSWD"]` to sync all posts to your website. `PASSWD` is your password for the blog sites(It is considered that all your blogs are under the same password). In sync-all way, as time limit from blog site, time gap between each post sending is set to 61 seconds. That may cost some time if you've got large sum of posts, It's your coffee time ;)
+
+
 
 **Please note:** 
 
