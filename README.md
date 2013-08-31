@@ -1,4 +1,4 @@
-octopress-syncPost V2.1
+octopress-syncPost
 ==================
 
 A octopress plugin to sync post(all posts or latest post) to a website which suport MetaWeblog. (CNBlogs,BlogBus, Wordpress etc.)
