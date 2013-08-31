@@ -19,9 +19,30 @@ A octopress plugin to sync post(all posts or latest post) to a website which sup
 
 	then run `bundle install` to install them.
 
-3. Add blogs configuration to the end of octopress/_config.yml
+3. add this task to Rakefile.
 
-```xml
+```ruby
+
+desc "sync latest post to MetaWeblog site"
+task :sync_latest_post, :passwd do |t, args|
+  puts "Sync the latest post to MetaWeblog site"
+  system "ruby plugins/sync_latest_post.rb  " + args[:passwd]
+end
+
+desc "sync all posts to MetaWeblog site(s)"
+task :sync_all_posts, :passwd do |t, args|
+  puts "Sync all posts to MetaWeblog site(s)"
+  system "ruby plugins/sync_all_posts.rb  " + args[:passwd]
+end
+
+```
+
+
+4. Add blogs configuration to the end of octopress/_config.yml
+
+
+``` xml
+
 # MetaWeblog
 MetaWeblog:
    blogName:
@@ -29,6 +50,7 @@ MetaWeblog:
       MetaWeblog_url: *YOURBLOGMETAWEBLOGURL*
       MetaWeblog_blogid: *BlogID*  //can be any number
       
+
 ``` 
 	
 It supports to post to multiple websites at once. There are examples in the file.
@@ -53,23 +75,6 @@ MetaWeblog:
 
 ```
 
-4. add this task to Rakefile.
-
-```ruby
-
-desc "sync latest post to MetaWeblog site"
-task :sync_latest_post, :passwd do |t, args|
-  puts "Sync the latest post to MetaWeblog site"
-  system "ruby plugins/sync_latest_post.rb  " + args[:passwd]
-end
-
-desc "sync all posts to MetaWeblog site(s)"
-task :sync_all_posts, :passwd do |t, args|
-  puts "Sync all posts to MetaWeblog site(s)"
-  system "ruby plugins/sync_all_posts.rb  " + args[:passwd]
-end
-
-```
 
 ## Usage
 
