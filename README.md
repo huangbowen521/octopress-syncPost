@@ -1,7 +1,7 @@
 octopress-syncPost V2.1
 ==================
 
-A octopress plugin to sync post(all posts or latest post) to a website which suport MetaWeblog. (Wordpress, CNBlogs,BlogBus etc.)
+A octopress plugin to sync post(all posts or latest post) to a website which suport MetaWeblog. (CNBlogs,BlogBus, Wordpress etc.)
 
 
 ## Configure
@@ -121,4 +121,12 @@ Use [cnblogs] as a example.
 
 	URL: http://<accountName>.blog.163.com/ (example: http://huang0925.blog.163.com/).
 
-[cnblogs]: http://www.cnblogs.com/
+## Next steps
+
+New features I'd like to add to this plugin:
+
+* eliminate duplication when csync_all_posts.
+* Till now, I've just tested cnblog. All other metaWeblog supported website should be tested.
+* Code block is not compatible in cnblogs?
+
+Welcome to make suggestions ot contribute to this repo :)
