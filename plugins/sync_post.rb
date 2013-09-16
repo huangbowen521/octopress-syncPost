@@ -28,6 +28,18 @@ module MetaWeblogSync
       postBlog postPath 
     end
 
+    def postBlogsBefore date
+      #find all blogs paths
+      postsPaths = getAllBlogsPaths
+      postsPaths.each do | path|
+        postDate = Date.parse(path[/\d{4}\/\d{2}\/\d{2}/])
+        next if postDate >= date
+        
+        postBlog path
+        sleep(120) #As time limit in blog wite, there should be a time gap in every loop
+      end
+    end
+
     def postBlog blogPath
       blogHtml = getBlogHtml blogPath
       post = getPost blogHtml
