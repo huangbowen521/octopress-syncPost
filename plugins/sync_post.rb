@@ -104,7 +104,7 @@ module MetaWeblogSync
 
       imgList.each do |img|
 
-        if (!img['src'].match(/^http/))
+        if (img['src'] != nil && !img['src'].match(/^http/))
           img['src'] = @globalConfig['url'] + img['src']
         end
       end
