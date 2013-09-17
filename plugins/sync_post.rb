@@ -28,6 +28,24 @@ module MetaWeblogSync
       postBlog postPath 
     end
 
+    def postBlogsBefore date
+      #find all blogs paths
+      postsPaths = getAllBlogsPaths
+      postsPaths.each do | path|
+        postDate = Date.parse(path[/\d{4}\/\d{2}\/\d{2}/])
+        next if postDate >= date
+        
+        postBlog path
+        sleep(120) #As time limit in blog wite, there should be a time gap in every loop
+      end
+    end
+
+    def postBlogByTitle title
+      postPath = getBlogPathByTitle title
+      puts postPath
+      postBlog postPath 
+    end
+
     def postBlog blogPath
       blogHtml = getBlogHtml blogPath
       post = getPost blogHtml
@@ -63,7 +81,22 @@ module MetaWeblogSync
       path = html.css('//h1[@class="entry-title"]/a')[0]['href']
 
       File.expand_path(File.dirname(__FILE__) + '/../public' + path) + '/index.html'
+    end
 
+    def getBlogPathByTitle title
+      indexFile = File.open(File.expand_path(File.dirname(__FILE__) + '/../public/blog/archives/index.html'), 'r')
+      contents = indexFile.read
+      html = Nokogiri::HTML(contents)
+
+      # get post path by title
+      posts = html.css('//h1/a')
+
+      path = String.new("")
+      posts.each do | post|
+        path = post['href'] if(post.text == title)
+      end
+
+      File.expand_path(File.dirname(__FILE__) + '/../public' + path) + '/index.html'
     end
 
     def getBlogHtml(path)
@@ -92,7 +125,7 @@ module MetaWeblogSync
 
       imgList.each do |img|
 
-        if (!img['src'].match(/^http/))
+        if (img['src'] != nil && !img['src'].match(/^http/))
           img['src'] = @globalConfig['url'] + img['src']
         end
       end

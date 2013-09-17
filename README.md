@@ -35,6 +35,18 @@ task :sync_all_posts, :passwd do |t, args|
   system "ruby plugins/sync_all_posts.rb  " + args[:passwd]
 end
 
+desc "sync posts before date to MetaWeblog site(s)"
+task :sync_posts_before_date, :passwd, :date do |t, args|
+  puts "Sync posts before date to MetaWeblog site(s)"
+  system "ruby plugins/sync_posts_before_date.rb  " + args[:passwd] + " " + args[:date]
+end
+
+desc "sync post by title to MetaWeblog site(s)"
+task :sync_post_by_title, :passwd, :title do |t, args|
+  puts "Sync post by title to MetaWeblog site(s)"
+  system "ruby plugins/sync_post_by_title.rb  " + args[:passwd] + " " + args[:title]
+end
+
 ```
 
 
@@ -84,6 +96,11 @@ MetaWeblog:
 2. run `rake sync_latest_post["PASSWD"]` to sync the latest post to your website. 
 or run `rake sync_all_posts["PASSWD"]` to sync all posts to your website. `PASSWD` is your password for the blog sites(It is considered that all your blogs are under the same password). In sync-all way, as time limit from blog site, time gap between each post sending is set to 61 seconds. That may cost some time if you've got large sum of posts, It's your coffee time ;)
 
+
+3. run `rake sync_posts_before_date["PASSWD","date"]` to sync the posts before compare date to your website, `date` is the date string, some thing like "2013-01-01" or "2013/01/01". 
+
+
+4. run `rake sync_post_by_title["PASSWD","title"]` to sync a post by the post title to your website. 
 
 
 **Please note:** 
