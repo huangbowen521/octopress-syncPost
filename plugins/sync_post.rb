@@ -61,9 +61,7 @@ module MetaWeblogSync
     end
 
     def getAllBlogsPaths
-      indexFile = File.open(File.expand_path(File.dirname(__FILE__) + '/../public/blog/archives/index.html'), 'r')
-      contents = indexFile.read
-      html = Nokogiri::HTML(contents)
+      html = getHtmlBy('/../public/blog/archives/index.html')
 
       # get latest post path
       paths = html.css('//h1/a')
@@ -75,9 +73,7 @@ module MetaWeblogSync
     end
 
     def getLatestBlogPath
-      indexFile = File.open(File.expand_path(File.dirname(__FILE__) + '/../public/index.html'), 'r')
-      contents = indexFile.read
-      html = Nokogiri::HTML(contents)
+      html = getHtmlBy('/../public/index.html')
 
       # get latest post path
       path = html.css('//h1[@class="entry-title"]/a')[0]['href']
@@ -86,9 +82,7 @@ module MetaWeblogSync
     end
 
     def getBlogPathByTitle title
-      indexFile = File.open(File.expand_path(File.dirname(__FILE__) + '/../public/blog/archives/index.html'), 'r')
-      contents = indexFile.read
-      html = Nokogiri::HTML(contents)
+      html = getHtmlBy('/../public/blog/archives/index.html')
 
       # get post path by title
       posts = html.css('//h1/a')
@@ -99,6 +93,12 @@ module MetaWeblogSync
       end
 
       File.expand_path(File.dirname(__FILE__) + '/../public' + path) + '/index.html'
+    end
+
+    def getHtmlBy path
+      indexFile = File.open(File.expand_path(File.dirname(__FILE__) + path), 'r')
+      contents = indexFile.read
+      html = Nokogiri::HTML(contents)
     end
 
     def getBlogHtml(path)
