@@ -16,6 +16,8 @@ module MetaWeblogSync
     def postAllBlogs 
       #find all blogs paths
       postsPaths = getAllBlogsPaths
+      #sync post from earlist to lastest
+      postsPaths.reverse!
       postsPaths.each do | path|
         postBlog path
         sleep(61) #As time limit in blog wite, there should be a time gap in every loop
