@@ -6,5 +6,5 @@ if $*[0] != nil #It seems to be runed when rake generate. I don't quite understa
   rescue Exception=>e
   	raise "please give a correct date string, like: 2013-01-01"
   end	
-  syncPost.postBlogsBefore date
+  syncPost.postBlogsAfter date
 end
