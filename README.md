@@ -109,13 +109,13 @@ MetaWeblog:
 
 
 2. run `rake sync_latest_post["PASSWD"]` to sync the latest post to your website. 
-or run `rake sync_all_posts["PASSWD"]` to sync all posts to your website. `PASSWD` is your password for the blog sites(It is considered that all your blogs are under the same password). In sync-all way, as time limit from blog site, time gap between each post sending is set to 61 seconds. That may cost some time if you've got large sum of posts, It's your coffee time ;)
+or run `rake sync_all_posts["PASSWD"]` to sync all posts to your website. `PASSWD` is your password for the blog sites(It is considered that all your blogs are under the same password). If the `PASSWD` is omitted, the program will ask you for the password of each blog site. In sync-all way, as time limit from blog site, time gap between each post sending is set to 61 seconds. That may cost some time if you've got large sum of posts, It's your coffee time ;)
 
 
-3. run `rake sync_posts_after_date["PASSWD","date"]` to sync the posts after compare date to your website, `date` is the date string, some thing like "2013-01-01" or "2013/01/01". 
+3. run `rake sync_posts_after_date["date","PASSWD"]` to sync the posts after compare date to your website, `date` is the date string, some thing like "2013-01-01" or "2013/01/01" or "Jan 1 2013". 
 
 
-4. run `rake sync_post_by_title["PASSWD","title"]` to sync a post by the post title to your website. 
+4. run `rake sync_post_by_title["title","PASSWD"]` to sync a post by the post title to your website. 
 
 
 **Please note:** 
