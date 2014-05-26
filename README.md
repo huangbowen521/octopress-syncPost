@@ -22,29 +22,44 @@ A octopress plugin to sync post(all posts or latest post) to a website which sup
 3. add this task to Rakefile.
 
 ```ruby
-
 desc "sync latest post to MetaWeblog site"
 task :sync_latest_post, :passwd do |t, args|
   puts "Sync the latest post to MetaWeblog site"
-  system "ruby plugins/sync_latest_post.rb  " + args[:passwd]
+  if :passwd.nil?
+	system "ruby plugins/sync_latest_post.rb  " + args[:passwd]
+  else
+	system "ruby plugins/sync_latest_post.rb"
+  end
 end
 
 desc "sync all posts to MetaWeblog site(s)"
 task :sync_all_posts, :passwd do |t, args|
   puts "Sync all posts to MetaWeblog site(s)"
-  system "ruby plugins/sync_all_posts.rb  " + args[:passwd]
+  if :passwd.nil?
+	system "ruby plugins/sync_all_posts.rb  " + args[:passwd]
+  else
+	system "ruby plugins/sync_all_posts.rb"
+  end
 end
 
 desc "sync posts after date to MetaWeblog site(s)"
-task :sync_posts_after_date, :passwd, :date do |t, args|
+task :sync_posts_after_date, :date, :passwd do |t, args|
   puts "Sync posts after date to MetaWeblog site(s)"
-  system "ruby plugins/sync_posts_after_date.rb  " + args[:passwd] + " " + args[:date]
+  if :passwd.nil?
+	system "ruby plugins/sync_posts_after_date.rb  \"" + args[:date] + "\" " + args[:passwd]
+  else
+	system "ruby plugins/sync_posts_after_date.rb  \"" + args[:date] + "\""
+  end
 end
 
 desc "sync post by title to MetaWeblog site(s)"
-task :sync_post_by_title, :passwd, :title do |t, args|
+task :sync_post_by_title, :title, :passwd do |t, args|
   puts "Sync post by title to MetaWeblog site(s)"
-  system "ruby plugins/sync_post_by_title.rb  " + args[:passwd] + " " + args[:title]
+  if :passwd.nil?
+	system "ruby plugins/sync_post_by_title.rb  \"" + args[:title] + "\" " + args[:passwd]
+  else
+	system "ruby plugins/sync_post_by_title.rb  \"" + args[:title] +"\""
+  end
 end
 
 ```
