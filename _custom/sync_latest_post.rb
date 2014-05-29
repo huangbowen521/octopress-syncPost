@@ -1,6 +1,6 @@
-require './plugins/sync_post.rb'
+require './_custom/sync_post.rb'
 puts "sync_latest_post.rb"
-if $*[0] != nil #It seems to be runed when rake generate. I don't quite understand.
+if $*[0] != nil 
   syncPost = MetaWeblogSync::SyncPost.new $*[0]
 else
   syncPost = MetaWeblogSync::SyncPost.new
