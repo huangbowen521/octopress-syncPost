@@ -6,7 +6,7 @@ A octopress plugin to sync post(all posts or latest post) to a website which sup
 
 ## Configure
 
-1. Checkout this repository, **copy files in plugins into octopress/plugins/ folder.**
+1. Checkout this repository, **copy _custom folder (including the files in it) to your octopress folder.**
 
 2. add new gem denpendencies to Gemfile.
 
@@ -26,9 +26,9 @@ desc "sync latest post to MetaWeblog site"
 task :sync_latest_post, :passwd do |t, args|
   puts "Sync the latest post to MetaWeblog site"
   if :passwd.nil?
-	system "ruby plugins/sync_latest_post.rb  " + args[:passwd]
+	system "ruby _custom/sync_latest_post.rb  " + args[:passwd]
   else
-	system "ruby plugins/sync_latest_post.rb"
+	system "ruby _custom/sync_latest_post.rb"
   end
 end
 
@@ -36,9 +36,9 @@ desc "sync all posts to MetaWeblog site(s)"
 task :sync_all_posts, :passwd do |t, args|
   puts "Sync all posts to MetaWeblog site(s)"
   if :passwd.nil?
-	system "ruby plugins/sync_all_posts.rb  " + args[:passwd]
+	system "ruby _custom/sync_all_posts.rb  " + args[:passwd]
   else
-	system "ruby plugins/sync_all_posts.rb"
+	system "ruby _custom/sync_all_posts.rb"
   end
 end
 
@@ -46,9 +46,9 @@ desc "sync posts after date to MetaWeblog site(s)"
 task :sync_posts_after_date, :date, :passwd do |t, args|
   puts "Sync posts after date to MetaWeblog site(s)"
   if :passwd.nil?
-	system "ruby plugins/sync_posts_after_date.rb  \"" + args[:date] + "\" " + args[:passwd]
+	system "ruby _custom/sync_posts_after_date.rb  \"" + args[:date] + "\" " + args[:passwd]
   else
-	system "ruby plugins/sync_posts_after_date.rb  \"" + args[:date] + "\""
+	system "ruby _custom/sync_posts_after_date.rb  \"" + args[:date] + "\""
   end
 end
 
@@ -56,9 +56,9 @@ desc "sync post by title to MetaWeblog site(s)"
 task :sync_post_by_title, :title, :passwd do |t, args|
   puts "Sync post by title to MetaWeblog site(s)"
   if :passwd.nil?
-	system "ruby plugins/sync_post_by_title.rb  \"" + args[:title] + "\" " + args[:passwd]
+	system "ruby _custom/sync_post_by_title.rb  \"" + args[:title] + "\" " + args[:passwd]
   else
-	system "ruby plugins/sync_post_by_title.rb  \"" + args[:title] +"\""
+	system "ruby _custom/sync_post_by_title.rb  \"" + args[:title] +"\""
   end
 end
 
@@ -112,10 +112,10 @@ MetaWeblog:
 or run `rake sync_all_posts["PASSWD"]` to sync all posts to your website. `PASSWD` is your password for the blog sites(It is considered that all your blogs are under the same password). If the `PASSWD` is omitted, the program will ask you for the password of each blog site. In sync-all way, as time limit from blog site, time gap between each post sending is set to 61 seconds. That may cost some time if you've got large sum of posts, It's your coffee time ;)
 
 
-3. run `rake sync_posts_after_date["date","PASSWD"]` to sync the posts after compare date to your website, `date` is the date string, some thing like "2013-01-01" or "2013/01/01" or "Jan 1 2013". 
+3. run `rake sync_posts_after_date["date","PASSWD"]` to sync the posts after compare date to your website, `date` is the date string, some thing like "2013-01-01" or "2013/01/01" or "Jan 1 2013". If the `PASSWD` is omitted, the program will ask you for the password of each blog site. 
 
 
-4. run `rake sync_post_by_title["title","PASSWD"]` to sync a post by the post title to your website. 
+4. run `rake sync_post_by_title["title","PASSWD"]` to sync a post by the post title to your website. If the `PASSWD` is omitted, the program will ask you for the password of each blog site.
 
 
 **Please note:** 
